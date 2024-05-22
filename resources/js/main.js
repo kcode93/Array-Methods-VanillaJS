@@ -31,6 +31,15 @@ function updateDOM(providedData = data){
     });
 }
 
+//double Money for users
+function doubleMoney(){
+    data = data.map(function(user){
+        return {...user, money: user.money * 2};
+    });
+
+    updateDOM();
+}
+
 //Adds User Data
 function addUserData(obj){
     data.push(obj);
@@ -70,6 +79,7 @@ async function getRandomUser(){
 addUserBtn.addEventListener('click', getRandomUser);
 rmToptUserBtn.addEventListener('click', removeTopUser);
 rmBottomtUserBtn.addEventListener('click', removeBottomUser);
+doubleMoneyBtn.addEventListener('click', doubleMoney);
 
 //Populates Initial Users
 getRandomUser();
