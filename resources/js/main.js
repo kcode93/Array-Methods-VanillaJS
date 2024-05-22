@@ -1,6 +1,8 @@
 //target DOM Elements
 const main = document.querySelector("#main");
 const addUserBtn = document.querySelector("#add-user");
+const rmToptUserBtn = document.querySelector("#remove-user-top");
+const rmBottomtUserBtn = document.querySelector("#remove-user-bottom");
 const doubleMoneyBtn = document.querySelector("#double-money");
 const showMillionairesBtn = document.querySelector("#show-millionaires");
 const sortBtn = document.querySelector("#sort");
@@ -35,6 +37,18 @@ function addUserData(obj){
     updateDOM();
 }
 
+//Removes First User in Array
+function removeTopUser(){
+    data.shift();
+    updateDOM();
+}
+
+//Removes Last User in Array
+function removeBottomUser(){
+    data.pop();
+    updateDOM();
+}
+
 //Fetch Random User and Add Money
 async function getRandomUser(){
     const API = 'https://randomuser.me/api';
@@ -53,9 +67,11 @@ async function getRandomUser(){
 
 
 //Event Listeners
-//window.addEventListener('DOMContentLoaded', getRandomUser);
+addUserBtn.addEventListener('click', getRandomUser);
+rmToptUserBtn.addEventListener('click', removeTopUser);
+rmBottomtUserBtn.addEventListener('click', removeBottomUser);
 
-//calls
+//Populates Initial Users
 getRandomUser();
 getRandomUser();
 getRandomUser();
