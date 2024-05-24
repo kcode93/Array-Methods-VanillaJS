@@ -31,6 +31,14 @@ function updateDOM(providedData = data){
     });
 }
 
+//sort users by richest
+function sortByRichest(){
+    data.sort(function(a,b){
+        return b.money - a.money;
+    });
+    updateDOM();
+}
+
 //double Money for users
 function doubleMoney(){
     data = data.map(function(user){
@@ -80,6 +88,7 @@ addUserBtn.addEventListener('click', getRandomUser);
 rmToptUserBtn.addEventListener('click', removeTopUser);
 rmBottomtUserBtn.addEventListener('click', removeBottomUser);
 doubleMoneyBtn.addEventListener('click', doubleMoney);
+sortBtn.addEventListener('click', sortByRichest);
 
 //Populates Initial Users
 getRandomUser();
