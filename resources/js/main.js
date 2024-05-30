@@ -39,6 +39,15 @@ function sortByRichest(){
     updateDOM();
 }
 
+//filter Millionares
+function filterMillionaires(){
+    const MILLIONARE_AFTER = 1000000;
+    data = data.filter(function(user){
+        return user.money >= MILLIONARE_AFTER;
+    });
+    updateDOM();
+}
+
 //double Money for users
 function doubleMoney(){
     data = data.map(function(user){
@@ -89,6 +98,7 @@ rmToptUserBtn.addEventListener('click', removeTopUser);
 rmBottomtUserBtn.addEventListener('click', removeBottomUser);
 doubleMoneyBtn.addEventListener('click', doubleMoney);
 sortBtn.addEventListener('click', sortByRichest);
+showMillionairesBtn.addEventListener('click', filterMillionaires);
 
 //Populates Initial Users
 getRandomUser();
