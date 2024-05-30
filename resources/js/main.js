@@ -31,6 +31,15 @@ function updateDOM(providedData = data){
     });
 }
 
+//calculates the total money in array
+function calculateTotal(){
+    const wealth = data.reduce((acc,user) => (acc += user.money),0);
+    const wealthElement = document.createElement('div');
+
+    wealthElement.innerHTML = `<h3>Total Wealth: <strong>${formatMoney(wealth)}</strong></h3>`;
+    main.appendChild(wealthElement);
+}
+
 //sort users by richest
 function sortByRichest(){
     data.sort(function(a,b){
@@ -99,6 +108,7 @@ rmBottomtUserBtn.addEventListener('click', removeBottomUser);
 doubleMoneyBtn.addEventListener('click', doubleMoney);
 sortBtn.addEventListener('click', sortByRichest);
 showMillionairesBtn.addEventListener('click', filterMillionaires);
+calculateBtn.addEventListener('click', calculateTotal);
 
 //Populates Initial Users
 getRandomUser();
